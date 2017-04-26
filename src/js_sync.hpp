@@ -51,7 +51,6 @@ class UserClass : public ClassDefinition<T, SharedUser> {
     using Value = js::Value<T>;
     using Function = js::Function<T>;
     using ReturnValue = js::ReturnValue<T>;
-    using NativeAccessor = realm::NativeAccessor<ValueType, ContextType>;
 
 public:
     std::string const name = "User";
@@ -337,7 +336,6 @@ class SyncClass : public ClassDefinition<T, void *> {
     using Value = js::Value<T>;
     using Function = js::Function<T>;
     using ReturnValue = js::ReturnValue<T>;
-    using NativeAccessor = realm::NativeAccessor<ValueType, ContextType>;
 
 public:
     std::string const name = "Sync";
@@ -392,7 +390,7 @@ template<typename T>
 void SyncClass<T>::set_verify_servers_ssl_certificate(ContextType ctx, FunctionType, ObjectType this_object, size_t argc, const ValueType arguments[], ReturnValue &return_value) {
     validate_argument_count(argc, 1);
     bool verify_servers_ssl_certificate = Value::validated_to_boolean(ctx, arguments[0]);
-    realm::SyncManager::shared().set_client_should_validate_ssl(verify_servers_ssl_certificate);
+//    realm::SyncManager::shared().set_client_should_validate_ssl(verify_servers_ssl_certificate);
 }
 
 template<typename T>
